@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:"http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Kullanıcı Güncelle</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container my-2">
+		<h3>Kullanıcı Güncelle</h3>
+		
+		<form action="#" th:action="@{/saveUser}" th:object="${user}" method="POST">
+			<input type="hidden" th:value="${user.id}" name="id" />
+			<div class="mt-4">
+				<span>İsim:</span>
+				<input type="text" th:field="*{name}" class="form-control" placeholder="İsim" />
+			</div>
+			<div class="mt-4">
+				<span>Soyisim:</span>
+				<input type="text" th:field="*{surname}" class="form-control" placeholder="Soyisim" />
+			</div>
+			<div class="mt-4">
+				<span>E-Posta:</span>
+				<input type="email" th:field="*{email}" class="form-control" placeholder="E-Posta" />
+			</div>
+			<div class="mt-4">
+				<span>Telefon:</span>
+				<input type="number" th:field="*{phone}" class="form-control" placeholder="Telefon" />
+			</div>
+			<div class="mt-4">
+				<button type="submit" class="btn btn-info">
+					Kullanıcı Güncelle
+				</button>		
+			</div>	
+				
+		</form>
+	</div>
+</body>
+</html>

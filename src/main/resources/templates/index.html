@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:"http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Vet</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body> 
+	
+	<div class="container my-2">
+		HAYVANLAR
+		<form class="my-2" th:action="@{/animals}" method="get"> 
+			<input id="textToSearch" type="text" name="text" />
+			<button type="submit">Ara</button>
+		</form>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Adı</th>
+					<th>Tür</th>
+					<th>Cins</th>
+					<th>Yaş</th>
+					<th>Açıklama</th>
+					<th>Düzenle / Sil</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="animal : ${listOfAnimals}">
+					<td th:text="${animal.name}">Adı</td>
+					<td th:text="${animal.type}">Tür</td>
+					<td th:text="${animal.genus}">Cins</td>
+					<td th:text="${animal.age}">Yaş</td>
+					<td th:text="${animal.description}">Açıklama</td>
+					<td>
+						<a th:href="@{/getAnimalFormToUpdate/{id}(id=${animal.id})}" class="btn btn-primary">Düzenle</a>
+						<a th:href="@{/deleteAnimal/{id}(id=${animal.id})}" class="btn btn-danger">Sil</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-info mt-2" th:href="@{/getAnimalFormToAdd}">Hayvan Ekle</a>
+	</div>
+	<hr/>
+	<div class="container my-2">
+		KULLANICILAR
+		<form class="my-2" th:action="@{/users}" method="get"> 
+			<input id="textToSearchUsers" type="text" name="text" />
+			<button type="submit">Ara</button>
+		</form>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Adı</th>
+					<th>Soyad</th>
+					<th>Telefon</th>
+					<th>E-Posta</th>
+					<th>Düzenle / Sil</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${listOfUser}">
+					<td th:text="${user.name}">Adı</td>
+					<td th:text="${user.surname}">Tür</td>
+					<td th:text="${user.phone}">Cins</td>
+					<td th:text="${user.email}">Yaş</td>
+					<td>
+						<a th:href="@{/getUserFormToUpdate/{id}(id=${user.id})}" class="btn btn-primary">Düzenle</a>
+						<a th:href="@{/deleteUser/{id}(id=${user.id})}" class="btn btn-danger">Sil</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-info mt-2" th:href="@{/getUserFormToAdd}">Kullanıcı Ekle</a>
+	</div>
+</body>
+</html>

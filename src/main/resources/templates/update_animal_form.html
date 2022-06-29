@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:"http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hayvan Güncelle</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container my-2">
+		<h3>Hayvan Güncelle</h3>
+		
+		<form action="#" th:action="@{/saveAnimal}" th:object="${animal}" method="POST">
+			<input type="hidden" th:value="${animal.id}" name="id" />
+			<div class="mt-4">
+				<span>Tür:</span>
+				<input type="text" th:field="*{type}" class="form-control" placeholder="Tür" />
+			</div>
+			<div class="mt-4">
+				<span>Cins:</span>
+				<input type="text" th:field="*{genus}" class="form-control" placeholder="Cins" />
+			</div>
+			<div class="mt-4">
+				<span>Adı:</span>
+				<input type="text" th:field="*{name}" class="form-control" placeholder="Adı" />
+			</div>
+			<div class="mt-4">
+				<span>Yaşı:</span>
+				<input type="number" th:field="*{age}" class="form-control" placeholder="Yaşı" />
+			</div>
+			<div class="mt-4">
+				<span>Açıklama:</span>
+				<input type="text" th:field="*{description}" class="form-control" placeholder="Açıklama" />
+			</div>
+			<div class="mt-4">
+				<span>Sahibi:</span>
+				<select th:field="*{user}">
+					<th:block th:each="user : ${listOfUser}">
+				    	<option  th:value="${user.id}"  th:text="${user.name}"></option>
+				    </th:block>
+				</select>
+			</div>
+			<div class="mt-4">
+				<button type="submit" class="btn btn-info">
+					Hayvan Güncelle
+				</button>		
+			</div>	
+				
+		</form>
+	</div>
+</body>
+</html>
